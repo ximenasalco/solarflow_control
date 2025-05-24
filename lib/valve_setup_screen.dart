@@ -66,9 +66,54 @@ class _ValveSetupScreenState extends State<ValveSetupScreen> {
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.check_circle, size : 80, color: Colors.green,)
+                  const Icon(Icons.check_circle, size : 80, color: Colors.green,),
+                  SizedBox(height: 20),
+                  const Text('Conexión exitosa', style: TextStyle(fontSize: 24)),
+                  const SizedBox(height: 20),
+                  const Text('La válvula se ha conectado a la red Wi-Fi', style: TextStyle(fontSize: 16), textAlign: TextAlign.center,),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: continueSetup, 
+                    child: const Text('¡Listo, comencemos!', style: TextStyle(fontSize: 16, color: Colors.white)),
+                  )
                 ],
-            ):
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Paso 1. Ingresa la red WIFI", style:TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 20),
+                  TextField(
+                    controller: _ssidController,
+                    decoration: const InputDecoration(
+                      labelText: 'Nombre de la red',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  TextField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(
+                      labelText: 'Contraseña',
+                      border: OutlineInputBorder(),
+                    ),
+                    obscureText: true,
+                  ),
+                  const SizedBox(height: 20),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: _isLoading ? null : connectvalve,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      ),
+                      child: _isLoading
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : const Text("Conectar a la válvula", style: TextStyle(color: Colors.white)),
+                    )
+                  )
+                ]
+            )
       ),
     );
   }

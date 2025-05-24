@@ -1,56 +1,62 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:google_sign_in/google_sign_in.dart';
-import 'valve_setup_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool loading = false;
 
-  Future<void> login() async{
+  Future<void> register() async{
     setState(() {
       loading = true;
     });
 
     try{
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final cred = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
 
-      Navigator.pushReplacementNamed(context, '/valveSetup');
-    }on FirebaseAuthException catch (e) {
+      final newuser = cred.additionalUserInfo?.isNewUser ?? false;
+      if (newuser){
+        Navigator.pushReplacementNamed(context, '/valveSetup');
+      }else{
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("El usuario ya existe"))
+        );
+      }
+    } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.message ?? "Error al iniciar sesión"),)
+        SnackBar(content: Text(e.message ?? "Error al registrarse"),)
       );
-    }finally{
+    } finally{
       setState(() {
         loading = false;
       });
     }
   }
-
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: const Text("Iniciar Sesión")),
+      appBar: AppBar(title: const Text("Registrarse")),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          children: [
+          children:[
             TextField(
               controller: emailController,
               decoration: const InputDecoration(
                 labelText: "Correo electrónico"
               ),
+            
             ),
             const SizedBox(height: 20),
             TextField(
@@ -63,13 +69,12 @@ class _LoginScreenState extends State<LoginScreen> {
             loading
             ? const CircularProgressIndicator()
             : ElevatedButton(
-              onPressed: login,
-              child: const Text("Iniciar Sesión"),
+              onPressed: register,
+              child: const Text("Registrarse"),
             ),
-          ],
-        ),
+          ]
+        )
       )
     );
   }
 }
-
