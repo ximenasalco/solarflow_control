@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "250923345499",
+    "project_id": "solarflow-77ab7",
+    "storage_bucket": "solarflow-77ab7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250923345499:android:e9a7eddddaf2e0c66d817e",
+        "android_client_info": {
+          "package_name": "com.example.solarflow_control"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "250923345499-e7sp16cuohkq6cc35er1g8emisbdbjut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOj09BunpJy-loukmXXOdvVG0ZmnkBotE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "250923345499-e7sp16cuohkq6cc35er1g8emisbdbjut.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "250923345499-ag4fj3i8kr4eug8m56c969i14k3nngrh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.solarflowControl"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
