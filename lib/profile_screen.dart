@@ -25,10 +25,10 @@ class ProfileScreen extends StatelessWidget{
             ElevatedButton.icon(
               onPressed: (){
               }, 
-              icon: const Icon(Icons.logout),
-              label: const Text('Cerrar Sesión'),
+              icon: const Icon(Icons.logout, color: Color.fromRGBO(242, 242, 242, 1.0)),
+              label: const Text('Cerrar Sesión', style: TextStyle(fontSize: 16, color: Color.fromRGBO(242, 242, 242, 1.0))), 
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
+                backgroundColor: Color.fromRGBO(81, 161, 75, 1.0),
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               ),
             )

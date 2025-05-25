@@ -156,7 +156,7 @@ class _TemporizadorScreenState extends State<TemporizadorScreen> with SingleTick
             padding: const EdgeInsets.symmetric(vertical: 15),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           ),
-          child: const Text('Guardar', style: TextStyle(fontSize: 18)),
+          child: const Text('Guardar', style: TextStyle(fontSize: 18), selectionColor: Color.fromRGBO(242, 242, 242, 1.0),),
         ),
       ),
     );

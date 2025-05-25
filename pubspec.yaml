@@ -9,17 +9,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^2.32.0       # Firebase Core (obligatorio)
-  firebase_auth: ^4.11.0       # Autenticación con Firebase
-  #google_sign_in: ^6.1.5 
-  #sign_in_button: ^3.2.0      # Login con Google
-  #flutter_svg: ^2.0.7          # Opcional: Para mostrar el logo de Google
+  firebase_core: ^2.32.0
+  firebase_auth: 4.12.0
   shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+
+dependency_overrides:
+  firebase_auth: 4.12.0
+  firebase_auth_platform_interface: 7.2.0
+  firebase_auth_web: 5.8.11
 
 flutter:
   uses-material-design: true

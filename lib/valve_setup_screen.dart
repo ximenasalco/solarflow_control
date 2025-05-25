@@ -61,12 +61,12 @@ class _ValveSetupScreenState extends State<ValveSetupScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Configuración de la válvula')),
       body: Padding(
-        padding: const EdgeInsets.all(24.0),
+        padding: const EdgeInsets.all(20.0),
         child: _isConnected
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.check_circle, size : 80, color: Colors.green,),
+                  const Icon(Icons.check_circle, size : 80, color: Color.fromRGBO(81, 161, 75, 1.0)),
                   SizedBox(height: 20),
                   const Text('Conexión exitosa', style: TextStyle(fontSize: 24)),
                   const SizedBox(height: 20),
@@ -74,7 +74,7 @@ class _ValveSetupScreenState extends State<ValveSetupScreen> {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: continueSetup, 
-                    child: const Text('¡Listo, comencemos!', style: TextStyle(fontSize: 16, color: Colors.white)),
+                    child: const Text('¡Listo, comencemos!', style: TextStyle(fontSize: 16, color: Color.fromRGBO(81, 161, 75, 1.0))),
                   )
                 ],
               )

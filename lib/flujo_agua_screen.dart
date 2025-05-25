@@ -24,6 +24,7 @@ class _FlujoAguaScreenState extends State<FlujoAguaScreen> {
             const SizedBox(height: 20),
             Text("${flujoActual.toStringAsFixed(1)} L/min", style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             Slider(
+              activeColor: const Color.fromRGBO(97, 158, 171, 1.0),
               value: flujoActual, 
               min:0, max:20, 
               divisions: 40, 
@@ -41,7 +42,7 @@ class _FlujoAguaScreenState extends State<FlujoAguaScreen> {
                   const SnackBar(content: Text('Flujo actualizado')),
                 );
               }, 
-              child: const Text('Guardar Flujo', style: TextStyle(fontSize: 16, color: Colors.white)),
+              child: const Text('Guardar Flujo', style: TextStyle(fontSize: 16, color: Color.fromRGBO(97, 158, 171, 1.0))),
             ),
           ],
         ),

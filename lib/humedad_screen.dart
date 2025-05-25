@@ -22,7 +22,7 @@ class HumedadScreen extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
-            Icon(Icons.grass, size: 80, color: Colors.green.withOpacity(0.7)),
+            Icon(Icons.grass, size: 80, color: Color.fromRGBO(97, 158, 171, 1.0)),
             const SizedBox(height: 20),
             Text("Humedad del entorno: $humedadActual%", style: const TextStyle(fontSize: 20)),
             const SizedBox(height: 8),

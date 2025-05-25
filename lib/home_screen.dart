@@ -9,7 +9,6 @@ import 'humedad_screen.dart';
 import 'bateria_screen.dart';
 import 'profile_screen.dart';
 import 'configuracion_screen.dart';
-//import 'package:solarflow_control/state/valvula_state.dart';
 
 class HomeScreen extends StatelessWidget{
   final List<Map<String, dynamic>> menuItems = [
@@ -27,7 +26,8 @@ class HomeScreen extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF2C7C3D),
-        title: Text('SolarFlow Control'),
+        iconTheme: IconThemeData(color: Color.fromRGBO(242, 242, 242, 1.0)),
+        title: Text('SolarFlow Control', style: TextStyle(color: Color.fromRGBO(242, 242, 242, 1.0))),
         centerTitle: true,
       ),
       drawer: Drawer(
@@ -35,11 +35,11 @@ class HomeScreen extends StatelessWidget{
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(color: Color(0xFF2C7C3D)),
-              child: Text('Menú', style: TextStyle(color: Colors.white, fontSize: 24)),
+              decoration: BoxDecoration(color: Color.fromRGBO(7, 125, 1, 1.0)),
+              child: Text('Menú', style: TextStyle(color: Color.fromRGBO(242, 242, 242, 1.0), fontSize: 24)),
             ),
             ...menuItems.map((item) => ListTile(
-              leading: Icon(item['icon'], color: Color(0xFF2C7C3D)),
+              leading: Icon(item['icon'], color: Color.fromRGBO(81, 161, 75, 1.0)),
               title: Text(item['title']),
               onTap: () {
                 Navigator.pop(context);

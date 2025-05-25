@@ -23,7 +23,7 @@ class HistorialScreen extends StatelessWidget{
                 ? Icons.play_arrow
                 : Icons.stop;
             return ListTile(
-              leading: Icon(icono, color: Colors.green),
+              leading: Icon(icono, color: Color.fromRGBO(81, 161, 75, 1.0)),
               title: Text(evento),
             );
           } 

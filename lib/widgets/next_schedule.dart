@@ -20,7 +20,7 @@ class NextSchedule extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(Icons.schedule, color: Colors.grey),
+        const Icon(Icons.schedule, color: Color.fromRGBO(7, 125, 1, 1.0)),
         const SizedBox(width: 10),
         Text(
           'Próxima apertura: ${getTextoProximaApertura()}',

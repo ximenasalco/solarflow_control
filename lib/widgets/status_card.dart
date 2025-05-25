@@ -28,7 +28,7 @@ class _StatusCardState extends State<StatusCard> {
           children: [
             Icon(
               Icons.water_drop,
-              color: isOpen ? Colors.blueAccent : Colors.grey,
+              color: isOpen ? Color.fromRGBO(97, 158, 171, 1.0) : Color.fromRGBO(242, 242, 242, 1.0),
               size: 60,
             ),
             const SizedBox(height: 10),
@@ -46,7 +46,7 @@ class _StatusCardState extends State<StatusCard> {
               ),
               child: Text(
                 isOpen ? 'CERRAR VÁLVULA' : 'ABRIR VÁLVULA',
-                style: const TextStyle(fontSize: 16, color: Colors.white),
+                style: const TextStyle(fontSize: 16, color: Color.fromRGBO(242, 242, 242, 1.0)),
               ),
             ),
           ],

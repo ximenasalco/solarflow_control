@@ -6,7 +6,7 @@ class BatteryStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(Icons.battery_full, color: Color(0xFFB68E38)),
+        Icon(Icons.battery_full, color: Color.fromRGBO(7, 125, 1, 1.0)),
         SizedBox(width: 10),
         Text('Batería: 85%', style: TextStyle(fontSize: 16)),
       ],

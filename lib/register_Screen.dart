@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -14,67 +13,62 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final passwordController = TextEditingController();
   bool loading = false;
 
-  Future<void> register() async{
-    setState(() {
-      loading = true;
-    });
+  Future<void> register() async {
+    setState(() => loading = true);
 
-    try{
-      final cred = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
 
-      final newuser = cred.additionalUserInfo?.isNewUser ?? false;
-      if (newuser){
-        Navigator.pushReplacementNamed(context, '/valveSetup');
-      }else{
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("El usuario ya existe"))
-        );
-      }
+      Navigator.pushReplacementNamed(context, '/valveSetup');
     } on FirebaseAuthException catch (e) {
+      String mensaje = 'Error al registrarse';
+      if (e.code == 'email-already-in-use') {
+        mensaje = 'Este correo ya está registrado.';
+      } else if (e.code == 'weak-password') {
+        mensaje = 'La contraseña es demasiado débil.';
+      } else if (e.code == 'invalid-email') {
+        mensaje = 'El correo no es válido.';
+      }
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.message ?? "Error al registrarse"),)
+        SnackBar(content: Text(mensaje)),
       );
-    } finally{
-      setState(() {
-        loading = false;
-      });
+    } finally {
+      setState(() => loading = false);
     }
   }
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Registrarse")),
+      appBar: AppBar(title: const Text('Registrarse')),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          children:[
+          children: [
             TextField(
               controller: emailController,
-              decoration: const InputDecoration(
-                labelText: "Correo electrónico"
-              ),
-            
+              decoration: const InputDecoration(labelText: 'Correo electrónico', hintStyle: TextStyle(fontSize: 16), ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             TextField(
               controller: passwordController,
-              decoration: const InputDecoration(
-                labelText: "Contraseña"
-              ),
+              obscureText: true,
+              decoration: const InputDecoration(labelText: 'Contraseña'),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 24),
             loading
-            ? const CircularProgressIndicator()
-            : ElevatedButton(
-              onPressed: register,
-              child: const Text("Registrarse"),
-            ),
-          ]
-        )
-      )
+                ? const CircularProgressIndicator()
+                : ElevatedButton(
+                    onPressed: register,
+                    child: const Text('Registrarse', style: TextStyle(fontSize: 16, color: Color.fromRGBO(97, 158, 171, 1.0))),
+                  ),
+          ],
+        ),
+      ),
     );
   }
 }
