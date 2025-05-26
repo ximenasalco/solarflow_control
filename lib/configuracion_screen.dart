@@ -11,12 +11,7 @@ class ConfiguracionScreen extends StatelessWidget{
       ),
       body: ListView(
         children: const[
-          ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Notificaciones'),
-            trailing: Icon(Icons.arrow_forward),
-          ),
-          Divider(),
+          
           ListTile(
             leading: Icon(Icons.language),
             title: Text('Idioma'),
