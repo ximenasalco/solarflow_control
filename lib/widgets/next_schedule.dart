@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
 import '../state/valvula_state.dart';
 
-class NextSchedule extends StatelessWidget {
+class NextSchedule extends StatefulWidget{
   const NextSchedule({super.key});
 
-  String getTextoProximaApertura() {
-    if (ValvulaState.isOpen) return 'Justo ahora';
+  @override
+  State<NextSchedule> createState() => _NextScheduleState();
+}
 
-    if (ValvulaState.horaInicio != null) {
+class _NextScheduleState extends State<NextSchedule>{
+  late final VoidCallback listener;
+
+  @override
+  void initState(){
+    super.initState();
+    listener = () => setState(() {});
+    ValvulaState.addListener(listener);
+  }
+
+  @override
+  void dispose(){
+    ValvulaState.removeListener(listener);
+    super.dispose();
+  }
+
+  String getTextoProximaApertura(){
+    if (ValvulaState.isOpen) return "Justo ahora";
+    if (ValvulaState.horaInicio != null){
       final h = ValvulaState.horaInicio!.hour.toString().padLeft(2, '0');
       final m = ValvulaState.horaInicio!.minute.toString().padLeft(2, '0');
-      return '$h:$m';
+      return "$h:$m";
     }
-
-    return 'No programado';
+    
+    return "Indefinido";
   }
 
   @override
@@ -30,3 +49,4 @@ class NextSchedule extends StatelessWidget {
     );
   }
 }
+

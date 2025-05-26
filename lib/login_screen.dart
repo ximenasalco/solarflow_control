@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -22,7 +23,17 @@ class _LoginScreenState extends State<LoginScreen> {
         password: passwordController.text.trim(),
       );
 
-      Navigator.pushReplacementNamed(context, '/valveSetup');
+      final prefs = await SharedPreferences.getInstance();
+      final email = FirebaseAuth.instance.currentUser?.email;
+      final isConfigured = email != null
+          ? prefs.getBool('valveConfigured_$email') ?? false
+          : false;
+
+      if (isConfigured) {
+        Navigator.pushReplacementNamed(context, '/home');
+      } else {
+        Navigator.pushReplacementNamed(context, '/valveSetup');
+      }
     } on FirebaseAuthException catch (e) {
       String mensaje = 'Error al iniciar sesión';
       if (e.code == 'user-not-found') {
@@ -51,7 +62,8 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             TextField(
               controller: emailController,
-              decoration: const InputDecoration(labelText: 'Correo electrónico'),
+              decoration:
+                  const InputDecoration(labelText: 'Correo electrónico'),
             ),
             const SizedBox(height: 16),
             TextField(
@@ -64,7 +76,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
                     onPressed: login,
-                    child: const Text('Iniciar Sesión', style: TextStyle(fontSize: 16, color: Color.fromRGBO(97, 158, 171, 1.0))),
+                    child: const Text('Iniciar Sesión',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Color.fromRGBO(97, 158, 171, 1.0),
+                            fontWeight: FontWeight.bold)),
                   ),
           ],
         ),

@@ -8,7 +8,7 @@ class BatteryStatus extends StatelessWidget {
       children: [
         Icon(Icons.battery_full, color: Color.fromRGBO(7, 125, 1, 1.0)),
         SizedBox(width: 10),
-        Text('Batería: 85%', style: TextStyle(fontSize: 16)),
+        Text('Batería: 96%', style: TextStyle(fontSize: 16)),
       ],
     );
   }

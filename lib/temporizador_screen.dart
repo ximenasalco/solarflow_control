@@ -152,7 +152,7 @@ class _TemporizadorScreenState extends State<TemporizadorScreen> with SingleTick
         child: ElevatedButton(
           onPressed: guardarConfiguracion,
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF2C7C3D),
+            backgroundColor: const Color.fromRGBO(7, 125, 1, 1.0),
             padding: const EdgeInsets.symmetric(vertical: 15),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           ),

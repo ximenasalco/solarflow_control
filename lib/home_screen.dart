@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF2C7C3D),
+        backgroundColor: Color.fromRGBO(7, 125, 1, 1.0),
         iconTheme: IconThemeData(color: Color.fromRGBO(242, 242, 242, 1.0)),
         title: Text('SolarFlow Control', style: TextStyle(color: Color.fromRGBO(242, 242, 242, 1.0))),
         centerTitle: true,
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget{
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(color: Color.fromRGBO(7, 125, 1, 1.0)),
+              decoration: BoxDecoration(color: Color.fromRGBO(81, 161, 75, 1.0)),
               child: Text('Menú', style: TextStyle(color: Color.fromRGBO(242, 242, 242, 1.0), fontSize: 24)),
             ),
             ...menuItems.map((item) => ListTile(

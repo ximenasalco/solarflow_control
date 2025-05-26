@@ -19,6 +19,8 @@ class _FlujoAguaScreenState extends State<FlujoAguaScreen> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text('Ajusta el nivel del flujo de agua (L/min):', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 20),

@@ -31,10 +31,10 @@ class SolarFlowApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SolarFlow Control',
       theme: ThemeData(
-        primaryColor: const Color(0xFF2C7C3D),
-        scaffoldBackgroundColor: Colors.white,
+        primaryColor: const Color.fromRGBO(7, 125, 1, 1.0),
+        scaffoldBackgroundColor: Color.fromRGBO(242, 242, 242, 1.0),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: const Color(0xFF55C3D3),
+          secondary: const Color.fromRGBO(97, 158, 171, 1.0),
         ),
       ),
       initialRoute: '/',

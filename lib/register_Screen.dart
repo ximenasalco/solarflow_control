@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -21,6 +22,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
+
+      final prefs = await SharedPreferences.getInstance();
+      //await prefs.setBool('valveConfigured', false);
+      final email = FirebaseAuth.instance.currentUser?.email;
+      if (email != null) {
+        await prefs.setBool('valveConfigured_$email', false);
+      }
+
 
       Navigator.pushReplacementNamed(context, '/valveSetup');
     } on FirebaseAuthException catch (e) {
@@ -51,7 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           children: [
             TextField(
               controller: emailController,
-              decoration: const InputDecoration(labelText: 'Correo electrónico', hintStyle: TextStyle(fontSize: 16), ),
+              decoration: const InputDecoration(labelText: 'Correo electrónico'),
             ),
             const SizedBox(height: 16),
             TextField(
@@ -64,7 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
                     onPressed: register,
-                    child: const Text('Registrarse', style: TextStyle(fontSize: 16, color: Color.fromRGBO(97, 158, 171, 1.0))),
+                    child: const Text('Registrarse', style: TextStyle(fontSize: 16, color: Color.fromRGBO(97, 158, 171, 1.0), fontWeight: FontWeight.bold)),
                   ),
           ],
         ),
