@@ -9,29 +9,23 @@ class NextSchedule extends StatefulWidget{
 }
 
 class _NextScheduleState extends State<NextSchedule>{
-  late final VoidCallback listener;
+  late final VoidCallback listener; //listener para escuchar cambios en el estado de la válvula
 
   @override
   void initState(){
-    super.initState();
-    listener = () => setState(() {});
+    super.initState(); 
+    listener = () => setState(() {}); //inicializa el listener que actualiza la UI cuando cambia el estado
     ValvulaState.addListener(listener);
   }
 
   @override
   void dispose(){
-    ValvulaState.removeListener(listener);
+    ValvulaState.removeListener(listener); 
     super.dispose();
   }
 
-  String getTextoProximaApertura(){
+  String getTextoProximaApertura(){ 
     if (ValvulaState.isOpen) return "Justo ahora";
-    if (ValvulaState.horaInicio != null){
-      final h = ValvulaState.horaInicio!.hour.toString().padLeft(2, '0');
-      final m = ValvulaState.horaInicio!.minute.toString().padLeft(2, '0');
-      return "$h:$m";
-    }
-    
     return "Indefinido";
   }
 
@@ -41,10 +35,7 @@ class _NextScheduleState extends State<NextSchedule>{
       children: [
         const Icon(Icons.schedule, color: Color.fromRGBO(7, 125, 1, 1.0)),
         const SizedBox(width: 10),
-        Text(
-          'Próxima apertura: ${getTextoProximaApertura()}',
-          style: const TextStyle(fontSize: 16),
-        ),
+        Text('Próxima apertura: ${getTextoProximaApertura()}',style: const TextStyle(fontSize: 16),),
       ],
     );
   }

@@ -48,11 +48,6 @@ class _TemporizadorScreenState extends State<TemporizadorScreen> with SingleTick
   }
 
   void guardarConfiguracion() {
-    if (_tabController.index == 0) {
-      print('Inicio: ${horaInicio?.format(context)} - Fin: ${horaFin?.format(context)}');
-    } else {
-      print('Temporizador por duración: $horas h, $minutos m, $segundos s');
-    }
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Temporizador guardado correctamente')),
     );
@@ -156,7 +151,7 @@ class _TemporizadorScreenState extends State<TemporizadorScreen> with SingleTick
             padding: const EdgeInsets.symmetric(vertical: 15),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           ),
-          child: const Text('Guardar', style: TextStyle(fontSize: 18), selectionColor: Color.fromRGBO(242, 242, 242, 1.0),),
+          child: const Text('Guardar', style: TextStyle(fontSize: 18, color: Color.fromRGBO(242, 242, 242, 1.0))),
         ),
       ),
     );

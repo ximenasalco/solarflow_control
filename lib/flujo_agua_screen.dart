@@ -13,9 +13,7 @@ class _FlujoAguaScreenState extends State<FlujoAguaScreen> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flujo de Agua'),
-      ),
+      appBar: AppBar(title: const Text('Flujo de Agua'),),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

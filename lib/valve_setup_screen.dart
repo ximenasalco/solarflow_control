@@ -194,11 +194,9 @@ class _ValveSetupScreenState extends State<ValveSetupScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.check_circle,
-              color: Color.fromRGBO(81, 161, 75, 1), size: 48),
+          const Icon(Icons.check_circle,color: Color.fromRGBO(81, 161, 75, 1), size: 48),
           const SizedBox(height: 16),
-          const Text('Configuración completada',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          const Text('Configuración completada',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: finishSetup,

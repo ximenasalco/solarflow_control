@@ -52,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             const CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/usericon.jpg'),
+              backgroundImage: AssetImage('assets/usericon.png'),
             ),
             const SizedBox(height: 16),
             
@@ -91,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF51A14B),
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 9),
               ),
             )
           ],

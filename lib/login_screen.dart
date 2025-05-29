@@ -14,7 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   bool loading = false;
 
-  Future<void> login() async {
+  Future<void> login() async { //iniciar sesion con firebase
     setState(() => loading = true);
 
     try {
@@ -36,14 +36,14 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     } on FirebaseAuthException catch (e) {
       String mensaje = 'Error al iniciar sesión';
-      if (e.code == 'user-not-found') {
-        mensaje = 'Usuario no registrado.';
-      } else if (e.code == 'wrong-password') {
-        mensaje = 'Contraseña incorrecta.';
+      if (e.code == 'email-already-in-use') {
+        mensaje = 'Este correo ya está registrado.';
+      } else if (e.code == 'weak-password') {
+        mensaje = 'La contraseña es demasiado débil.';
       } else if (e.code == 'invalid-email') {
-        mensaje = 'Correo inválido.';
+        mensaje = 'El correo no es válido.';
       }
-
+      
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(mensaje)),
       );
@@ -77,10 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 : ElevatedButton(
                     onPressed: login,
                     child: const Text('Iniciar Sesión',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Color.fromRGBO(97, 158, 171, 1.0),
-                            fontWeight: FontWeight.bold)),
+                        style: TextStyle(fontSize: 16,color: Color.fromRGBO(97, 158, 171, 1.0),fontWeight: FontWeight.bold)),
                   ),
           ],
         ),

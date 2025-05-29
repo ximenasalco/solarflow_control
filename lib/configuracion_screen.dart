@@ -6,12 +6,9 @@ class ConfiguracionScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Configuración'),
-      ),
+      appBar: AppBar(title: const Text('Configuración'),),
       body: ListView(
         children: const[
-          
           ListTile(
             leading: Icon(Icons.language),
             title: Text('Idioma'),

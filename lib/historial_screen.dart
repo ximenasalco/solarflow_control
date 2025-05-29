@@ -24,9 +24,7 @@ class HistorialScreen extends StatelessWidget{
                 title: Text(texto),
               );
             }
-            
             )
     );
   }
-
 }

@@ -26,16 +26,9 @@ class _StatusCardState extends State<StatusCard> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            Icon(
-              Icons.water_drop,
-              color: isOpen ? Color.fromRGBO(97, 158, 171, 1.0) : Color.fromRGBO(242, 242, 242, 1.0),
-              size: 60,
-            ),
+            Icon(Icons.water_drop,color: isOpen ? Color.fromRGBO(97, 158, 171, 1.0) : Color.fromRGBO(242, 242, 242, 1.0),size: 60,),
             const SizedBox(height: 10),
-            Text(
-              'Estado de la válvula: ${isOpen ? 'ABIERTA' : 'CERRADA'}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+            Text('Estado de la válvula: ${isOpen ? 'ABIERTA' : 'CERRADA'}',style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: toggleValve,

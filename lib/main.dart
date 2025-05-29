@@ -32,7 +32,7 @@ class SolarFlowApp extends StatelessWidget {
       title: 'SolarFlow Control',
       theme: ThemeData(
         primaryColor: const Color.fromRGBO(7, 125, 1, 1.0),
-        scaffoldBackgroundColor: Color.fromRGBO(242, 242, 242, 1.0),
+        scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSwatch().copyWith(
           secondary: const Color.fromRGBO(97, 158, 171, 1.0),
         ),

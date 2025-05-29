@@ -9,13 +9,6 @@ class HumedadScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     String state = "Optima";
 
-    if (humedadActual<30){
-      state = "Baja";
-    }else if
-      (humedadActual>70){
-      state = "Alta";
-    }
-
     return Scaffold(
       appBar: AppBar(title: const Text("Nivel de humedad")),
       body: Center(
